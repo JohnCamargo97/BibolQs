@@ -1,1 +1,10 @@
-<h1>Bibol questions!</h1>
+<h1>Bibol Questions!</h1>
+<table>
+{% for verse, content in verses.items %}
+    <tr>
+        <td>{{ verse }}</td>
+        <td>{{ content }}</td>    
+    </tr>    
+
+{% endfor %}
+</table>
