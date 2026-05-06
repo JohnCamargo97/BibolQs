@@ -1,10 +1,17 @@
 <h1>Bibol Questions!</h1>
-<table>
-{% for verse, content in verses.items %}
-    <tr>
-        <td>{{ verse }}</td>
-        <td>{{ content }}</td>    
-    </tr>    
 
+{% for verse, content in verses.items %}
+    {{ verse }}
+    <div style="display: flexbox; margin-bottom: 20;">
+        <label for="ContentVerse">ContentVerse: </label>
+        <input type="text" size="150" name="ContentVerse" value="{{ content }}" required="" id={{verse}}>
+    </div>  
+    <div style="display: flexbox; margin-bottom: 20;">
+        <label for="IncompletePhrase">IncompletePhrase: </label>
+        <input type="text" size="150" name="IncompletePhrase" value="" required="" id="a"+{{verse}}>
+    </div> 
+    <br> 
+    <br>
 {% endfor %}
 </table>
+
