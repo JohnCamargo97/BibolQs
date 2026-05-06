@@ -39,8 +39,8 @@ class chapter:
         return(self.dictVs)
 
 
-Galatas1 = chapter(data)
-Galatas1.separateChapter()
-print(Galatas1.dictVs)
+#Galatas1 = chapter(data)
+#Galatas1.separateChapter()
+#print(Galatas1.dictVs)
 
 
