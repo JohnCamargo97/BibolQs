@@ -1,15 +1,22 @@
+
 <h1>Bibol Questions!</h1>
 
-{% for verse, content in verses.items %}
-    {{ verse }}
-    <div style="display: flexbox; margin-bottom: 20;">
+{% for i in test %}<!--
+    -->{% with a="1" %}<!--
+    -->{% if i == "{"  %}<!--
+    --> {{a}}<!--
+    -->{% else %}<!--
+    -->o<!--
+    -->{% endif %}<!--
+    -->{% endwith %}<!--
+-->{% endfor %}
+
+
+{% for verse in verses %}
+    {{ verse.chapter }}
         <label for="ContentVerse">ContentVerse: </label>
-        <input type="text" size="150" name="ContentVerse" value="{{ content }}" required="" id={{verse}}>
+        <input type="text" size="150" name="ContentVerse" value="{{ verse.ContentVerse }}" required="" id={{verse}}>
     </div>  
-    <div style="display: flexbox; margin-bottom: 20;">
-        <label for="IncompletePhrase">IncompletePhrase: </label>
-        <input type="text" size="150" name="IncompletePhrase" value="" required="" id="a"+{{verse}}>
-    </div> 
     <br> 
     <br>
 {% endfor %}

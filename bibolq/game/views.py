@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from . import jsonConverter
 from .forms import VersePhraseSelect
-# Create your views here.
-def home(request):
+from .models import Verse
 
-    Galatas1 = jsonConverter.chapter(jsonConverter.data)
+def home(request):
+    test = 'que{so}'
+    Galatas1 = Verse.objects.filter(NumberVerse=24).all()
     if request.method == "POST":
         Verseform = VersePhraseSelect(request.POST,instant=request.Verse )
     else:
@@ -12,7 +13,8 @@ def home(request):
 
     context = {
         'vform' : Verseform,
-        'verses': Galatas1.separateChapter()
+        'verses': Galatas1,
+        'test':test
     }
 
     
