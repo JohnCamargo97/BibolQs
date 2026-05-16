@@ -11,7 +11,7 @@ class Verse(models.Model):
     chapter = models.ForeignKey(Chapter, on_delete=models.CASCADE)
     NumberVerse = models.SmallIntegerField(default=0)
     ContentVerse = models.CharField(max_length=1000)
-    IncompletePhrase = models.CharField(max_length=1000, default="")
+    #IncompletePhrase = models.CharField(max_length=1000, default="")
 
     def __str__(self):
         chapter = str(self.chapter)

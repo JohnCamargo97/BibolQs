@@ -1,46 +1,51 @@
 import json
 
-data = "1 Pablo, apóstol (no de hombres ni por hombre, sino por Jesucristo y por Dios el Padre que lo resucitó de los muertos), " \
-            "2 y todos los hermanos que están conmigo, a las iglesias de Galacia: " \
-            "3 Gracia y paz sean a vosotros, de Dios el Padre y de nuestro Señor Jesucristo, " \
-            "4 el cual se dio a sí mismo por nuestros pecados para librarnos del presente siglo malo, conforme a la voluntad de nuestro Dios y Padre, " \
-            "5 a quien sea la gloria por los siglos de los siglos. Amén."
 
- 
 
+data =  """Hermanos, si alguno fuere sorprendido en {alguna falta}, vosotros que sois espirituales, {restauradle con espíritu de mansedumbre}, considerándote a ti mismo, no sea que tú {también seas tentado}. 
+$Sobrellevad los unos {las cargas de los otros}, y cumplid así {la ley de Cristo}. 
+$Porque el que se cree ser algo, no siendo nada, {a sí mismo se engaña}. 
+$Así que, cada uno {someta a prueba su propia obra}, y entonces tendrá motivo de gloriarse solo respecto {de sí mismo}, y no en otro; 
+$porque cada uno {llevará su propia carga}.
+$El que es enseñado en la palabra, haga partícipe de {toda cosa buena al que lo instruye}.
+$No os engañéis; Dios {no puede ser burlado}: pues todo lo que el hombre sembrare, {eso también segará}. 
+$Porque el que siembra para su carne, de la carne {segará corrupción}; mas el que siembra para el Espíritu, del Espíritu {segará vida eterna}. 
+$No nos cansemos, pues, de {hacer bien}; porque {a su tiempo segaremos}, si no desmayamos. 
+$Así que, según {tengamos oportunidad}, hagamos bien a todos, y {mayormente a los de la familia de la fe}.
+$Mirad con cuán grandes letras os escribo de mi propia mano. 
+$Todos los que quieren agradar en la carne, estos {os obligan a que os circuncidéis}, solamente para {no padecer persecución} a causa de la cruz de Cristo. 
+$Porque ni aun los mismos que se circuncidan {guardan la ley}; pero quieren que vosotros os circuncidéis, para {gloriarse en vuestra carne}. 
+$Pero lejos esté de mí gloriarme, sino en {la cruz de nuestro Señor Jesucristo}, por quien el {mundo me es crucificado a mí}, y yo al mundo. 
+$Porque en Cristo Jesús ni la circuncisión {vale nada}, ni la incircuncisión, sino {una nueva creación}. 
+$Y a todos los que anden conforme a esta regla, {paz y misericordia sea a ellos}, y {al Israel de Dios}.
+$De aquí en adelante nadie me cause molestias; porque yo {traigo en mi cuerpo las marcas del Señor Jesús}.
+$Hermanos, {la gracia de nuestro Señor Jesucristo sea con vuestro espíritu}. Amén.
+"""
+cleanedData = data.replace("\n","").split("$")
 class chapter:
     def __init__(self, data):
-        self.data = data
+        self.data = cleanedData
         self.verseFlag = 0
         self.verseNum = 0
         self.actualVs = ""
-        self.digits = "0123456789"
+        self.numbs = list(range(1,100))
         self.dictVs = {}
     
 
     def separateChapter(self):
-        for ch in self.data:
-            if ch in self.digits:
-
-                if self.verseFlag == 1:
-                    self.verseNum += 1
-                    self.dictVs.update({self.verseNum:self.actualVs})
-                    self.actualVs = ""
-                else:
-                    self.verseFlag = 1
-            else:
-                try:
-                    self.actualVs = self.actualVs + ch 
-                except:
-                    self.actualVs = ch
-        self.verseNum += 1
-        self.dictVs.update({self.verseNum:self.actualVs})
+        for vs in self.data:
+            self.verseNum = self.data.index(vs)+1
+            self.dictVs.update({self.verseNum:vs})
+                   
 
         return(self.dictVs)
 
+        
 
-#Galatas1 = chapter(data)
-#Galatas1.separateChapter()
-#print(Galatas1.dictVs)
+
+
+#Galatas2 = chapter(data)
+#Galatas2.separateChapter()
+#print(Galatas2.dictVs)
 
 

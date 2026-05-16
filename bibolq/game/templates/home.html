@@ -1,24 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+   span.hidden {
+    border-bottom: 1px solid rgb(161, 129, 41);
+       } 
 
-<h1>Bibol Questions!</h1>
+    span.shown {
+    border-bottom: 0px solid red;
+    
+    
+   } 
 
-{% for i in test %}<!--
-    -->{% with a="1" %}<!--
-    -->{% if i == "{"  %}<!--
-    --> {{a}}<!--
-    -->{% else %}<!--
-    -->o<!--
-    -->{% endif %}<!--
-    -->{% endwith %}<!--
--->{% endfor %}
+   font.hidden {
+    opacity: 0;
+    
+   }
 
+    font.shown {
+    opacity: 1;
+    
+    
+   }
 
-{% for verse in verses %}
-    {{ verse.chapter }}
-        <label for="ContentVerse">ContentVerse: </label>
-        <input type="text" size="150" name="ContentVerse" value="{{ verse.ContentVerse }}" required="" id={{verse}}>
-    </div>  
-    <br> 
-    <br>
+</style>
+
+<h1 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">Bibol Questions!</h1>
+<br>
+<h3 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">{{verse}}</h3> 
+<br>
+<div style="display: inline-block;">
+{% for seg, attr in formattedVerse.items %}
+    <span class={{attr}}><font class={{attr}} style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">{{seg}}</font></span>
 {% endfor %}
+</div>
+<br>
+<br>
+<div>
+    <button>REVELAR</button>
+    <script>
+        const button = document.querySelector('button');
+        button.addEventListener('click', () => {
+        const elements = document.querySelectorAll('font.hidden');
+        elements.forEach(element => {
+            var opacity = window.getComputedStyle(element).getPropertyValue("opacity");
+            console.log(opacity);
+            if(opacity == 0){
+                console.log("trash");
+                element.style.opacity = 1;
+            }
+            else {
+                element.style.opacity = 0;
+            }
+            
+        })    
+        });
+
+    </script>
+    
+    <button>SIGUIENTE</button>
+</div>
 </table>
 
+</html>
